@@ -1,0 +1,2 @@
+VERSION=MOODLE_310_STABLE
+PACKAGES="vim git apache2 php php-common php-pear php-mysql php-curl php-gd php-zip php-mbstring php-intl"
