@@ -5,21 +5,25 @@ services:
   build: ./apache
   depends_on:
   - mysql
-#Mapeo de puertos http y https del host al 80 y 443 del container
+  #Mapeo de puertos http y https del host al 80 y 443 del container
   ports:
   - "8080:80"
   - "8443:443"
   hostname: apache
-#Mapea el volumen moodle al directorio de datos de moodle
+  #Mapea el volumen moodle al directorio de datos de moodle
   volumes:
   - moodle_data:/var/www/moodledata
+#Service mysql toma el Dockerfile del directorio ./mysql
  mysql:
   build: ./mysql
-#Mapeo de puerto 3306 del host al 3306 del container
+  #Mapeo de puerto 3306 del host al 3306 del container
   ports:
   - "3306:3306"
   hostname: mysql
-#Mapea el volumen mysql_data al directorio de datos de mysql
+  #Archivo con variables de entorno para el servicio
+  env_file: 
+  - "mysql/envfile"
+  #Mapea el volumen mysql_data al directorio de datos de mysql
   volumes:
   - mysql_data:/var/lib/mysql
 volumes:
